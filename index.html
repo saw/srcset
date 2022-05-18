@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .holder {
+            display: flex;
+            justify-content: center;
+            width: 90vw;
+            /* margin-top: 1000vh; */
+        }
+
+        img {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Welcome</h1>
+    <div class="holder">
+        <img src="/3000.png" alt="" srcset="375.png 375w, 750.png 750w, 1500.png 1500w, 3000.png 3000w" sizes="100vw">
+    </div>
+    <script src="templates.js"></script>
+    <script>
+        function doStuff() {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('woo');
+                }, 5000);
+            })
+        }
+
+        const prom = doStuff();
+
+        prom.then(result => {
+            console.log('also', result);
+        })
+        async function go() {
+            console.time('woo');
+            const result = await prom;
+            console.log('result', result);
+            console.timeEnd('woo');
+            console.time('woo2');
+            const secondResult = await prom;
+            console.timeEnd('woo2');
+            console.log('second', secondResult);
+        }
+        go();
+    </script>
+</body>
+
+</html>
